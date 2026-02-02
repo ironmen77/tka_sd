@@ -40,7 +40,7 @@
         .custom-scroll::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
     </style>
 </head>
-<body class="min-h-screen overflow-x-hidden">
+<body class="min-h-screen overflow-x-hidden text-gray-800">
 
     <header class="bg-white p-3 shadow-md sticky top-0 z-50">
         <div class="container mx-auto flex justify-between items-center">
@@ -70,8 +70,8 @@
 
     <main class="container mx-auto p-4 md:py-12">
         
-        <div id="loader" class="fixed inset-0 bg-white/80 z-[200] flex items-center justify-center hidden">
-            <div class="text-center">
+        <div id="loader" class="fixed inset-0 bg-white/80 z-[200] flex items-center justify-center hidden text-center">
+            <div>
                 <div class="animate-spin rounded-full h-12 w-12 border-4 border-[#003399] border-t-transparent mx-auto mb-4"></div>
                 <p id="loaderText" class="text-sm font-bold text-[#003399]">Mohon Tunggu...</p>
             </div>
@@ -87,7 +87,7 @@
                 <div class="space-y-4 text-left">
                     <div>
                         <label class="block text-sm font-bold text-white/80 mb-1">Pilih Mata Uji</label>
-                        <select id="subjectSelect" class="w-full p-3 bg-white/20 border border-white/30 rounded-md text-white outline-none font-medium transition-all">
+                        <select id="subjectSelect" class="w-full p-3 bg-white/20 border border-white/30 rounded-md text-white outline-none font-medium">
                             <option value="Bahasa Indonesia" class="text-gray-800">Literasi (Bahasa Indonesia)</option>
                             <option value="Matematika" class="text-gray-800">Numerasi (Matematika)</option>
                         </select>
@@ -101,7 +101,7 @@
 
         <!-- PAGE 2: KONFIRMASI -->
         <section id="loginPage" class="hidden max-w-lg mx-auto card-pusmendik p-10 transition-all fade-in text-center text-gray-800">
-            <div class="border-b border-gray-100 pb-4 mb-8 text-center">
+            <div class="border-b border-gray-100 pb-4 mb-8 text-center text-gray-800">
                 <h2 class="text-2xl font-black text-[#003399] uppercase tracking-tight">Konfirmasi Data Peserta</h2>
             </div>
             <div class="space-y-6 text-left">
@@ -117,7 +117,7 @@
                     <div class="w-full md:w-1/3 text-gray-500 font-bold text-xs uppercase tracking-wider text-right">Token</div>
                     <div class="flex-1 w-full"><input type="text" id="tokenInput" placeholder="READY24" class="w-full p-4 bg-white border border-gray-200 rounded-lg font-mono text-center tracking-[12px] uppercase font-black text-2xl text-blue-600 outline-none focus:ring-2 focus:ring-blue-400"></div>
                 </div>
-                <div class="pt-8 flex justify-center">
+                <div class="pt-8 flex justify-center text-gray-800">
                     <button onclick="prepareExam()" class="bg-[#003399] text-white hover:bg-blue-800 font-black px-24 py-4 rounded-xl shadow-xl transition-all uppercase tracking-widest transform active:scale-95">MASUK</button>
                 </div>
             </div>
@@ -130,10 +130,10 @@
                     <div class="flex justify-between items-center mb-6 border-b pb-4">
                         <div class="flex items-center gap-3">
                             <span class="bg-[#003399] text-white px-4 py-1.5 rounded-lg text-sm font-black uppercase">SOAL <span id="currentNumberText">1</span></span>
-                            <span id="questionTypeBadge" class="text-[10px] font-bold uppercase px-2 py-0.5 rounded bg-gray-50 text-gray-400 border italic">PG</span>
+                            <span id="questionTypeBadge" class="text-[10px] font-bold uppercase px-2 py-0.5 rounded bg-gray-100 text-gray-400 border italic">PG</span>
                         </div>
-                        <div class="flex gap-2 items-center text-xs">
-                            <span id="currentPackageInfo" class="bg-gray-100 px-2 py-1 rounded text-gray-400 font-bold"></span>
+                        <div class="flex gap-2 items-center text-xs text-gray-400">
+                            <span id="currentPackageInfo" class="bg-gray-100 px-2 py-1 rounded font-bold"></span>
                             <div class="flex border rounded overflow-hidden">
                                 <button onclick="changeFontSize('text-base')" class="px-3 py-1 bg-gray-50 hover:bg-gray-200 font-bold border-r">A</button>
                                 <button onclick="changeFontSize('text-xl')" class="px-3 py-1 bg-gray-50 hover:bg-gray-200 font-bold border-r">A</button>
@@ -141,50 +141,50 @@
                             </div>
                         </div>
                     </div>
-                    <div id="questionImageBox" class="hidden mb-6 flex justify-center bg-gray-50 p-4 rounded-xl border border-dashed">
+                    <div id="questionImageBox" class="hidden mb-6 flex justify-center bg-gray-50 p-4 rounded-xl border border-dashed text-gray-800">
                         <img id="questionImageDisplay" src="" class="max-h-64 object-contain shadow-sm rounded-lg">
                     </div>
                     <div id="questionContent" class="text-gray-800 leading-relaxed text-xl mb-10 min-h-[100px]"></div>
-                    <div id="optionsContainer" class="space-y-3"></div>
+                    <div id="optionsContainer" class="space-y-3 text-gray-800"></div>
                 </div>
-                <div class="bg-white p-4 rounded-xl shadow-lg border flex flex-wrap justify-between items-center gap-4">
+                <div class="bg-white p-4 rounded-xl shadow-lg border flex flex-wrap justify-between items-center gap-4 text-gray-800">
                     <button id="btnPrev" onclick="prevQuestion()" class="flex-1 md:flex-none bg-gray-100 hover:bg-gray-200 text-gray-700 font-bold py-3 px-8 rounded-lg border transition-all disabled:opacity-30 uppercase text-xs">Sebelumnya</button>
                     <button id="btnRagu" onclick="toggleDoubtful()" class="flex-1 md:flex-none bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-3 px-8 rounded-lg transition-all uppercase text-xs">Ragu-ragu</button>
                     <button id="btnNext" onclick="nextQuestion()" class="flex-1 md:flex-none bg-[#003399] hover:bg-blue-800 text-white font-bold py-3 px-8 rounded-lg transition-all shadow-md uppercase text-xs">Berikutnya</button>
                 </div>
             </div>
             <div class="lg:w-80 space-y-4">
-                <div class="bg-white rounded-xl shadow-lg border p-6 text-center">
+                <div class="bg-white rounded-xl shadow-lg border p-6 text-center text-gray-800">
                     <p class="text-[10px] text-gray-400 font-black uppercase tracking-widest mb-1">Sisa Waktu</p>
                     <div id="timer" class="text-4xl font-black text-[#003399] tabular-nums">00:00</div>
                 </div>
-                <div class="bg-white rounded-xl shadow-lg border p-6">
+                <div class="bg-white rounded-xl shadow-lg border p-6 text-gray-700">
                     <div class="flex justify-between items-center mb-4 border-b pb-2">
-                        <h3 class="font-bold text-gray-700 uppercase text-xs">Daftar Soal</h3>
-                        <span id="progressText" class="text-xs bg-gray-100 px-2 py-1 rounded-md text-gray-500 font-bold">0/0</span>
+                        <h3 class="font-bold uppercase text-xs">Daftar Soal</h3>
+                        <span id="progressText" class="text-xs bg-gray-100 px-2 py-1 rounded-md font-bold text-gray-800">0/0</span>
                     </div>
-                    <div id="questionGrid" class="grid grid-cols-5 gap-2"></div>
-                    <button onclick="confirmFinish()" class="w-full mt-6 bg-red-500 hover:bg-red-600 text-white font-bold py-3 rounded-lg shadow-lg uppercase text-xs">Selesai Tes</button>
+                    <div id="questionGrid" class="grid grid-cols-5 gap-2 text-gray-800"></div>
+                    <button onclick="confirmFinish()" class="w-full mt-6 bg-red-500 hover:bg-red-600 text-white font-bold py-3 rounded-lg shadow-lg uppercase text-xs transform active:scale-95">Selesai Tes</button>
                 </div>
             </div>
         </section>
 
         <!-- PAGE 4: HASIL -->
         <section id="resultPage" class="hidden max-w-2xl mx-auto card-pusmendik p-10 text-center fade-in text-gray-800">
-            <div class="w-24 h-24 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-6">
+            <div class="w-24 h-24 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-sm text-gray-800">
                 <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
             </div>
-            <h2 class="text-3xl font-black mb-1 uppercase tracking-tight">Hasil Tes Selesai</h2>
-            <p id="resultMsg" class="text-gray-500 mb-8 font-medium italic">Menyimpan rincian nilai...</p>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+            <h2 class="text-3xl font-black mb-1 uppercase tracking-tight text-gray-800">Hasil Tes Selesai</h2>
+            <p id="resultMsg" class="text-gray-500 mb-8 font-medium italic text-gray-800">Menyimpan rincian nilai...</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8 text-gray-800 text-gray-800">
                 <div class="bg-[#003399] p-8 rounded-xl text-white shadow-xl">
                     <p class="text-xs font-bold uppercase tracking-widest opacity-80 mb-2">Skor Kamu</p>
                     <p id="finalScore" class="text-6xl font-black">0</p>
                 </div>
-                <div class="bg-gray-50 p-8 rounded-xl text-left border flex flex-col justify-center space-y-3 text-sm">
-                    <div class="flex justify-between border-b pb-1 font-bold"><span class="text-gray-500 uppercase text-xs">Benar</span> <span id="correctCount" class="text-green-600">0</span></div>
-                    <div class="flex justify-between border-b pb-1 font-bold"><span class="text-gray-500 uppercase text-xs">Salah</span> <span id="wrongCount" class="text-red-600">0</span></div>
-                    <div class="flex justify-between font-bold"><span class="text-gray-500 uppercase text-xs">Kosong</span> <span id="unansweredCount" class="text-gray-800">0</span></div>
+                <div class="bg-gray-50 p-8 rounded-xl text-left border flex flex-col justify-center space-y-3 text-sm text-gray-800">
+                    <div class="flex justify-between border-b pb-1 font-bold text-gray-800"><span class="text-gray-500 uppercase text-xs">Benar</span> <span id="correctCount" class="text-green-600">0</span></div>
+                    <div class="flex justify-between border-b pb-1 font-bold text-gray-800"><span class="text-gray-500 uppercase text-xs">Salah</span> <span id="wrongCount" class="text-red-600">0</span></div>
+                    <div class="flex justify-between font-bold text-gray-800"><span class="text-gray-500 uppercase text-xs">Kosong</span> <span id="unansweredCount" class="text-gray-800">0</span></div>
                 </div>
             </div>
             <button onclick="location.reload()" class="bg-gray-900 hover:bg-black text-white px-10 py-4 rounded-xl font-bold transition-all shadow-lg uppercase text-sm">Kembali ke Beranda</button>
@@ -194,7 +194,7 @@
         <section id="adminPage" class="hidden card-pusmendik p-4 md:p-8 transition-all border fade-in mb-20 text-gray-800">
             <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4">
                 <div>
-                    <h2 class="text-2xl font-black tracking-tight uppercase">Dashboard Administrator</h2>
+                    <h2 class="text-2xl font-black tracking-tight uppercase text-gray-800">Dashboard Administrator</h2>
                     <div class="flex gap-4 mt-2">
                         <button onclick="setAdminTab('soal')" id="tabBtnSoal" class="text-sm font-bold border-b-2 border-[#003399] text-[#003399] pb-1 transition-all">Kelola Soal</button>
                         <button onclick="setAdminTab('nilai')" id="tabBtnNilai" class="text-sm font-bold border-b-2 border-transparent text-gray-400 pb-1 transition-all">Rekap Nilai</button>
@@ -207,10 +207,10 @@
             </div>
 
             <!-- Tab Soal -->
-            <div id="adminTabSoal" class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                <div class="lg:col-span-1 space-y-4 text-left">
+            <div id="adminTabSoal" class="grid grid-cols-1 lg:grid-cols-3 gap-6 text-gray-800 text-gray-800">
+                <div class="lg:col-span-1 space-y-4 text-left text-gray-800">
                     <div class="bg-gray-50 p-5 rounded-xl border border-gray-200 shadow-inner">
-                        <div class="flex justify-between items-center mb-4 text-left">
+                        <div class="flex justify-between items-center mb-4 text-left text-gray-800">
                             <h3 class="font-black text-gray-700 uppercase text-xs">Form Input Soal</h3>
                             <button type="button" onclick="downloadTemplate()" class="bg-blue-100 text-blue-700 px-2 py-1 rounded text-[9px] font-black hover:bg-blue-200 uppercase transition-all">Unduh Template</button>
                         </div>
@@ -221,7 +221,7 @@
                             <div class="grid grid-cols-2 gap-2 text-left">
                                 <div>
                                     <label class="block text-[10px] font-bold text-gray-400 mb-1 uppercase">Tipe</label>
-                                    <select id="qType" onchange="toggleFormInputs()" class="w-full p-2 border rounded font-bold text-xs outline-none">
+                                    <select id="qType" onchange="toggleFormInputs()" class="w-full p-2 border rounded font-bold text-xs outline-none bg-white">
                                         <option value="pg">PG (Satu)</option>
                                         <option value="pgk">PGK (Banyak)</option>
                                         <option value="bs">BS (B / S)</option>
@@ -229,55 +229,55 @@
                                 </div>
                                 <div>
                                     <label class="block text-[10px] font-bold text-gray-400 mb-1 uppercase">Paket</label>
-                                    <select id="qPackage" class="w-full p-2 border rounded font-bold text-xs outline-none">
+                                    <select id="qPackage" class="w-full p-2 border rounded font-bold text-xs outline-none bg-white">
                                         <option value="Paket 1">Paket 1</option><option value="Paket 2">Paket 2</option>
                                     </select>
                                 </div>
                             </div>
 
-                            <div class="grid grid-cols-2 gap-2 text-left">
+                            <div class="grid grid-cols-2 gap-2 text-left text-gray-800">
                                 <div>
-                                    <label class="block text-[10px] font-bold text-gray-400 mb-1 uppercase">Bobot</label>
-                                    <input type="number" id="qWeight" value="1" min="1" class="w-full p-2 border rounded font-bold text-xs outline-none focus:ring-1 focus:ring-blue-400 text-gray-700">
+                                    <label class="block text-[10px] font-bold text-gray-400 mb-1 uppercase text-gray-800">Bobot</label>
+                                    <input type="number" id="qWeight" value="1" min="1" class="w-full p-2 border rounded font-bold text-xs outline-none focus:ring-1 focus:ring-blue-400 text-gray-700 bg-white">
                                 </div>
                                 <div>
-                                    <label class="block text-[10px] font-bold text-gray-400 mb-1 uppercase">Gambar</label>
+                                    <label class="block text-[10px] font-bold text-gray-400 mb-1 uppercase text-gray-800">Gambar</label>
                                     <input type="file" id="qImageFile" accept="image/*" onchange="handleImageUpload(event)" class="text-[9px] w-full cursor-pointer">
                                 </div>
                             </div>
 
-                            <div id="imgPreviewBox" class="hidden border rounded bg-white p-1 relative">
+                            <div id="imgPreviewBox" class="hidden border rounded bg-white p-1 relative text-gray-800">
                                 <img id="imgPreview" src="" class="max-h-16 mx-auto rounded">
                                 <button type="button" onclick="clearImage()" class="absolute -top-1 -right-1 bg-red-500 text-white rounded-full p-0.5 shadow-sm hover:bg-red-600"><svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg></button>
                             </div>
 
-                            <div class="text-left">
-                                <label class="block text-[10px] font-bold text-gray-400 mb-1 uppercase">Teks Soal</label>
-                                <textarea id="qText" required rows="2" class="w-full p-2 border rounded text-xs outline-none focus:ring-1 focus:ring-blue-400 text-gray-700"></textarea>
+                            <div class="text-left text-gray-800">
+                                <label class="block text-[10px] font-bold text-gray-400 mb-1 uppercase text-gray-800">Teks Soal</label>
+                                <textarea id="qText" required rows="2" class="w-full p-2 border rounded text-xs outline-none focus:ring-1 focus:ring-blue-400 text-gray-700 bg-white"></textarea>
                             </div>
 
-                            <div id="pgOptions" class="grid grid-cols-2 gap-2 text-left">
-                                <input type="text" id="optA" placeholder="A" class="w-full p-2 border rounded text-[10px] outline-none text-gray-700">
-                                <input type="text" id="optB" placeholder="B" class="w-full p-2 border rounded text-[10px] outline-none text-gray-700">
-                                <input type="text" id="optC" placeholder="C" class="w-full p-2 border rounded text-[10px] outline-none text-gray-700">
-                                <input type="text" id="optD" placeholder="D" class="w-full p-2 border rounded text-[10px] outline-none text-gray-700">
+                            <div id="pgOptions" class="grid grid-cols-2 gap-2 text-left text-gray-800">
+                                <input type="text" id="optA" placeholder="A" class="w-full p-2 border rounded text-[10px] outline-none text-gray-700 bg-white text-gray-800">
+                                <input type="text" id="optB" placeholder="B" class="w-full p-2 border rounded text-[10px] outline-none text-gray-700 bg-white text-gray-800">
+                                <input type="text" id="optC" placeholder="C" class="w-full p-2 border rounded text-[10px] outline-none text-gray-700 bg-white text-gray-800">
+                                <input type="text" id="optD" placeholder="D" class="w-full p-2 border rounded text-[10px] outline-none text-gray-700 bg-white text-gray-800">
                             </div>
 
-                            <div class="text-left">
-                                <label class="block text-[10px] font-bold text-gray-400 mb-1 uppercase">Kunci Jawaban</label>
+                            <div class="text-left text-gray-800">
+                                <label class="block text-[10px] font-bold text-gray-400 mb-1 uppercase text-gray-800">Kunci Jawaban</label>
                                 <div id="pgAnswer">
-                                    <select id="qAnswer" class="w-full p-2 border rounded font-bold text-xs text-blue-600 outline-none">
+                                    <select id="qAnswer" class="w-full p-2 border rounded font-bold text-xs text-blue-600 outline-none bg-white">
                                         <option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option>
                                     </select>
                                 </div>
-                                <div id="pgkAnswer" class="hidden flex gap-3 bg-white p-2 border rounded text-[10px] font-bold text-gray-700">
+                                <div id="pgkAnswer" class="hidden flex gap-3 bg-white p-2 border rounded text-[10px] font-bold text-gray-700 text-gray-800">
                                     <label class="flex items-center gap-1 cursor-pointer"><input type="checkbox" name="pgk" value="A"> A</label>
                                     <label class="flex items-center gap-1 cursor-pointer"><input type="checkbox" name="pgk" value="B"> B</label>
                                     <label class="flex items-center gap-1 cursor-pointer"><input type="checkbox" name="pgk" value="C"> C</label>
                                     <label class="flex items-center gap-1 cursor-pointer"><input type="checkbox" name="pgk" value="D"> D</label>
                                 </div>
                                 <div id="bsAnswer" class="hidden">
-                                    <select id="qAnswerBS" class="w-full p-2 border rounded font-bold text-xs text-green-600 outline-none">
+                                    <select id="qAnswerBS" class="w-full p-2 border rounded font-bold text-xs text-green-600 outline-none bg-white">
                                         <option value="A">Benar</option><option value="B">Salah</option>
                                     </select>
                                 </div>
@@ -288,51 +288,51 @@
                         </form>
                     </div>
 
-                    <div class="bg-green-50 p-5 rounded-xl border border-green-200 space-y-4 shadow-inner text-left">
-                        <h3 class="font-black text-green-700 mb-2 uppercase text-xs tracking-widest">Import Massal</h3>
+                    <div class="bg-green-50 p-5 rounded-xl border border-green-200 space-y-4 shadow-inner text-left text-gray-800">
+                        <h3 class="font-black text-green-700 mb-2 uppercase text-xs tracking-widest text-gray-800">Import Massal</h3>
                         <div>
-                            <p class="text-[9px] font-bold text-green-600 mb-1 uppercase">1. Link Cloud (Google Sheets)</p>
-                            <div class="flex gap-1">
-                                <input type="text" id="gasUrl" placeholder="URL Apps Script" class="flex-1 p-2 border border-green-200 rounded text-[9px] outline-none">
-                                <button onclick="importFromSpreadsheet()" class="bg-green-600 text-white px-2 py-1 rounded text-[9px] font-bold hover:bg-green-700">Ambil</button>
+                            <p class="text-[9px] font-bold text-green-600 mb-1 uppercase text-gray-800 text-gray-800">1. Link Cloud (Google Sheets)</p>
+                            <div class="flex gap-1 text-gray-800">
+                                <input type="text" id="gasUrl" placeholder="URL Apps Script" class="flex-1 p-2 border border-green-200 rounded text-[9px] outline-none bg-white text-gray-800">
+                                <button onclick="importFromSpreadsheet()" class="bg-green-600 text-white px-2 py-1 rounded text-[9px] font-bold hover:bg-green-700 text-gray-800 text-white">Ambil</button>
                             </div>
                         </div>
                         <div class="border-t border-green-100 pt-3">
-                            <p class="text-[9px] font-bold text-green-600 mb-1 uppercase">2. Upload File Lokal (CSV)</p>
-                            <input type="file" id="csvFileImport" accept=".csv" onchange="handleCSVImport(event)" class="w-full text-[9px] file:mr-2 file:py-1 file:px-2 file:rounded file:border-0 file:bg-white file:text-green-700 cursor-pointer">
+                            <p class="text-[9px] font-bold text-green-600 mb-1 uppercase text-gray-800">2. Upload File Lokal (CSV)</p>
+                            <input type="file" id="csvFileImport" accept=".csv" onchange="handleCSVImport(event)" class="w-full text-[9px] file:mr-2 file:py-1 file:px-2 file:rounded file:border-0 file:bg-white file:text-green-700 cursor-pointer text-gray-800">
                         </div>
                     </div>
                 </div>
 
-                <div class="lg:col-span-2 space-y-4 text-left">
-                    <div class="flex justify-between items-center text-[10px] font-black text-gray-400 uppercase tracking-widest">
+                <div class="lg:col-span-2 space-y-4 text-left text-gray-800">
+                    <div class="flex justify-between items-center text-[10px] font-black text-gray-400 uppercase tracking-widest text-gray-800">
                         <span>Database Soal (<span id="adminTotalCount">0</span>)</span>
-                        <button onclick="deleteAllQuestions()" class="text-red-500 hover:underline">Hapus Semua</button>
+                        <button onclick="deleteAllQuestions()" class="text-red-500 hover:underline text-left">Hapus Semua</button>
                     </div>
                     <div class="overflow-hidden border rounded-xl bg-gray-50 max-h-[600px] overflow-y-auto custom-scroll shadow-inner">
-                        <table class="w-full text-left border-collapse">
-                            <thead class="bg-white text-gray-400 text-[9px] uppercase font-bold sticky top-0 shadow-sm">
+                        <table class="w-full text-left border-collapse text-gray-800">
+                            <thead class="bg-white text-gray-400 text-[9px] uppercase font-bold sticky top-0 shadow-sm text-gray-800">
                                 <tr><th class="px-4 py-3">Pkt/Tipe</th><th class="px-4 py-3">Isi Soal</th><th class="px-4 py-3 text-right">Aksi</th></tr>
                             </thead>
-                            <tbody id="adminQuestionTable" class="divide-y text-[11px] text-gray-700"></tbody>
+                            <tbody id="adminQuestionTable" class="divide-y text-[11px] text-gray-700 text-gray-800"></tbody>
                         </table>
                     </div>
                 </div>
             </div>
 
             <!-- Tab Nilai -->
-            <div id="adminTabNilai" class="hidden space-y-6 text-left">
+            <div id="adminTabNilai" class="hidden space-y-6 text-left text-gray-800">
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                     <div class="bg-blue-50 p-5 rounded-xl border border-blue-100 text-center shadow-sm"><p class="text-[10px] font-bold text-blue-600 uppercase tracking-widest">Total Peserta</p><p id="statTotalPeserta" class="text-3xl font-black text-blue-800">0</p></div>
                     <div class="bg-green-50 p-5 rounded-xl border border-green-100 text-center shadow-sm"><p class="text-[10px] font-bold text-green-600 uppercase tracking-widest">Rata-rata Skor</p><p id="statRataSkor" class="text-3xl font-black text-green-800">0</p></div>
                     <div class="bg-yellow-50 p-5 rounded-xl border border-yellow-100 text-center shadow-sm"><p class="text-[10px] font-bold text-yellow-600 uppercase tracking-widest">Tertinggi</p><p id="statMaxSkor" class="text-3xl font-black text-yellow-800">0</p></div>
                 </div>
                 <div class="overflow-hidden border rounded-xl bg-gray-50 max-h-[500px] overflow-y-auto custom-scroll shadow-inner">
-                    <table class="w-full text-left border-collapse">
-                        <thead class="bg-white text-gray-400 text-[9px] uppercase font-bold sticky top-0 shadow-sm">
-                            <tr><th class="px-4 py-3 text-left">Siswa</th><th class="px-4 py-3 text-left">Mapel (Paket)</th><th class="px-4 py-3 text-center">B/S/K</th><th class="px-4 py-3 text-center">Skor</th><th class="px-4 py-3 text-right">Waktu</th></tr>
+                    <table class="w-full text-left border-collapse text-gray-800">
+                        <thead class="bg-white text-gray-400 text-[9px] uppercase font-bold sticky top-0 shadow-sm text-gray-800">
+                            <tr><th class="px-4 py-3 text-left">Siswa</th><th class="px-4 py-3 text-left">Mata Uji (Paket)</th><th class="px-4 py-3 text-center">B/S/K</th><th class="px-4 py-3 text-center">Skor</th><th class="px-4 py-3 text-right">Waktu</th></tr>
                         </thead>
-                        <tbody id="adminResultsTable" class="divide-y text-[11px] text-gray-700 text-left"></tbody>
+                        <tbody id="adminResultsTable" class="divide-y text-[11px] text-gray-700 text-left text-gray-800"></tbody>
                     </table>
                 </div>
             </div>
@@ -352,7 +352,7 @@
             <div class="space-y-4 text-left">
                 <label class="text-[10px] font-bold text-gray-400 uppercase text-gray-800">Sandi Administrator</label>
                 <input type="password" id="adminPass" placeholder="Masukkan Sandi" class="w-full p-4 bg-gray-50 border border-gray-200 rounded-lg text-center font-bold outline-none focus:ring-2 focus:ring-blue-400 text-gray-800">
-                <div class="flex gap-2 pt-2 text-center">
+                <div class="flex gap-2 pt-2 text-center text-gray-700">
                     <button onclick="toggleAdminLogin(false)" class="flex-1 py-3 border rounded-lg font-bold hover:bg-gray-50 transition-all uppercase text-xs tracking-widest text-gray-700">Batal</button>
                     <button onclick="handleAdminLogin()" class="flex-1 py-3 bg-[#003399] text-white rounded-lg font-bold hover:bg-blue-800 shadow-md transition-all uppercase text-xs tracking-widest">Masuk</button>
                 </div>
@@ -363,11 +363,11 @@
     <!-- MODAL: KONFIRMASI -->
     <div id="confirmModal" class="fixed inset-0 bg-black/50 hidden items-center justify-center z-[100] p-4 backdrop-blur-sm">
         <div class="bg-white rounded-xl max-w-sm w-full p-8 shadow-2xl text-center">
-            <h3 class="text-lg font-black mb-4 uppercase text-gray-800" id="confirmTitle">Konfirmasi</h3>
+            <h3 class="text-lg font-black mb-4 uppercase text-gray-800 text-gray-800" id="confirmTitle">Konfirmasi</h3>
             <p class="text-sm text-gray-500 mb-8" id="confirmBody">Lanjutkan tindakan ini?</p>
             <div class="flex gap-3">
                 <button onclick="closeConfirmModal()" class="flex-1 py-3 border rounded-lg font-bold hover:bg-gray-50 uppercase text-xs text-gray-700">Tidak</button>
-                <button id="confirmBtnAction" class="flex-1 py-3 bg-red-600 text-white rounded-lg font-bold hover:bg-red-700 shadow-lg uppercase text-xs">Ya</button>
+                <button id="confirmBtnAction" class="flex-1 py-3 bg-red-600 text-white rounded-lg font-bold hover:bg-red-700 shadow-lg uppercase text-xs text-gray-700">Ya</button>
             </div>
         </div>
     </div>
@@ -388,14 +388,13 @@
             measurementId: "G-Y07817VBWX"
         };
 
-        // Initialize Firebase services immediately in the global module scope
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
         const db = getFirestore(app);
         const appId = 'tka-sd-online-v3';
 
         // --- APP STATE ---
-        let user = null;
+        let currentUserObj = null;
         let allQuestions = [];
         let allResults = [];
         let activeQuestions = [];
@@ -405,7 +404,10 @@
         let selectedSubject = 'Matematika';
         let selectedPackage = 'Paket 1';
         let adminFilterSubject = 'Matematika';
-        let timerSeconds = 30 * 60;
+        
+        const EXAM_DURATION_MINS = 75;
+        const MAX_QUESTIONS_PER_EXAM = 30;
+        let timerSeconds = EXAM_DURATION_MINS * 60;
         let timerInterval;
 
         // --- CORE FUNCTIONS ---
@@ -413,13 +415,14 @@
         const initAuth = async () => {
             showLoader(true, "Sinkronisasi Cloud...");
             try {
-                // RULE 3: Auth first
+                // Memastikan login anonim dipanggil
                 const cred = await signInAnonymously(auth);
-                console.log("Auth Success:", cred.user.uid);
+                currentUserObj = cred.user;
+                console.log("Auth Success:", currentUserObj.uid);
             } catch (err) { 
                 console.error("Auth error:", err);
                 if (err.code === 'auth/configuration-not-found') {
-                    showToast("Firebase Error: Aktifkan 'Anonymous login' di Console!", "error");
+                    showToast("Error: Aktifkan 'Anonymous login' di Firebase Console!", "error");
                 } else {
                     showToast("Error Koneksi Cloud: " + err.message, "error");
                 }
@@ -428,17 +431,16 @@
             }
         };
 
-        // Setup the listener immediately. It will have a valid 'auth' instance now.
         onAuthStateChanged(auth, (u) => { 
-            user = u; 
-            if (user) { 
+            currentUserObj = u; 
+            if (u) { 
                 startDataSync(); 
                 startResultSync(); 
             } 
         });
 
         const startDataSync = () => {
-            if (!user) return;
+            if (!currentUserObj) return;
             const qRef = collection(db, 'artifacts', appId, 'public', 'data', 'questions');
             onSnapshot(qRef, (snapshot) => {
                 allQuestions = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
@@ -447,7 +449,7 @@
         };
 
         const startResultSync = () => {
-            if (!user) return;
+            if (!currentUserObj) return;
             const rRef = collection(db, 'artifacts', appId, 'public', 'data', 'results');
             onSnapshot(rRef, (snapshot) => {
                 allResults = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
@@ -526,7 +528,7 @@
             document.getElementById('adminTotalCount').innerText = f.length;
             f.sort((a,b) => (b.createdAt || 0) - (a.createdAt || 0)).forEach(q => {
                 const tr = document.createElement('tr');
-                tr.innerHTML = `<td class="px-4 py-3"><span class="bg-gray-200 text-gray-600 px-1 py-0.5 rounded text-[8px] font-bold">${q.package || 'Pkt 1'}</span><br><span class="bg-blue-100 text-blue-700 px-1 py-0.5 rounded border border-blue-200 uppercase text-[8px] font-bold">${q.type}</span> | <b>${q.weight || 1}</b></td><td class="px-4 py-3 text-gray-600 max-w-[200px] truncate">${q.text}</td><td class="px-4 py-3 text-right space-x-2"><button onclick="editQuestion('${q.id}')" class="text-blue-500 font-bold uppercase hover:underline">Edit</button><button onclick="deleteQuestion('${q.id}')" class="text-red-400 font-bold uppercase hover:underline">Hapus</button></td>`;
+                tr.innerHTML = `<td class="px-4 py-3"><span class="bg-gray-200 text-gray-600 px-1 py-0.5 rounded text-[8px] font-bold">${q.package || 'Pkt 1'}</span><br><span class="bg-blue-100 text-blue-700 px-1 py-0.5 rounded border border-blue-200 uppercase text-[8px] font-bold">${q.type}</span> | <b>${q.weight || 1}</b></td><td class="px-4 py-3 text-gray-600 max-w-[200px] truncate text-left">${q.text}</td><td class="px-4 py-3 text-right space-x-2"><button onclick="editQuestion('${q.id}')" class="text-blue-500 font-bold uppercase hover:underline">Edit</button><button onclick="deleteQuestion('${q.id}')" class="text-red-400 font-bold uppercase hover:underline">Hapus</button></td>`;
                 t.appendChild(tr);
             });
         };
@@ -552,7 +554,11 @@
 
         document.getElementById('addQuestionForm').onsubmit = async (e) => {
             e.preventDefault();
-            if (!user) return showToast("Sistem Belum Siap", "error");
+            if (!currentUserObj) {
+                showToast("Menunggu Koneksi Cloud...", "error");
+                await initAuth();
+                if (!currentUserObj) return;
+            }
             const qId = document.getElementById('editId').value, t = document.getElementById('qType').value;
             let ans;
             if (t === 'pgk') { ans = Array.from(document.querySelectorAll('input[name="pgk"]:checked')).map(cb => cb.value); if (ans.length === 0) return showToast("Pilih minimal 1 jawaban!", "error"); }
@@ -561,7 +567,7 @@
 
             const data = { text: document.getElementById('qText').value, type: t, package: document.getElementById('qPackage').value, weight: parseInt(document.getElementById('qWeight').value) || 1, imageUrl: document.getElementById('qImageUrl').value || "", options: { A: document.getElementById('optA').value || 'Benar', B: document.getElementById('optB').value || 'Salah', C: document.getElementById('optC').value, D: document.getElementById('optD').value }, answer: ans, subject: adminFilterSubject, createdAt: serverTimestamp() };
             showLoader(true, "Menyimpan...");
-            try { const ref = collection(db, 'artifacts', appId, 'public', 'data', 'questions'); if (qId) await updateDoc(doc(ref, qId), data); else await addDoc(ref, data); resetForm(); showToast("Berhasil Disimpan", "success"); } catch (err) { showToast("Gagal Simpan", "error"); } finally { showLoader(false); }
+            try { const ref = collection(db, 'artifacts', appId, 'public', 'data', 'questions'); if (qId) await updateDoc(doc(ref, qId), data); else await addDoc(ref, data); resetForm(); showToast("Berhasil Disimpan", "success"); } catch (err) { showToast("Gagal Simpan: " + err.message, "error"); } finally { showLoader(false); }
         };
 
         window.editQuestion = (id) => {
@@ -661,7 +667,7 @@
                 tot++; sum += r.score; if(r.score > mx) mx = r.score;
                 const tr = document.createElement('tr');
                 const dt = r.createdAt ? new Date(r.createdAt.toMillis()).toLocaleDateString('id-ID', {day:'2-digit', month:'short', hour:'2-digit', minute:'2-digit'}) : '-';
-                tr.innerHTML = `<td class="px-4 py-3 font-bold text-gray-800 text-xs">${r.name}</td><td class="px-4 py-3 text-gray-500 uppercase font-black text-[8px]">${r.subject} (${r.package || 'Pkt 1'})</td><td class="px-4 py-3 text-xs text-center"><span class="text-green-600 font-bold">${r.correct}</span>/<span class="text-red-500 font-bold">${r.wrong}</span>/<span class="text-gray-400 font-bold">${r.empty}</span></td><td class="px-4 py-3 text-center"><span class="bg-blue-100 text-blue-700 px-2 py-0.5 rounded font-black">${r.score}</span></td><td class="px-4 py-3 text-right text-gray-400 text-[10px]">${dt}</td>`;
+                tr.innerHTML = `<td class="px-4 py-3 font-bold text-gray-800 text-xs text-left">${r.name}</td><td class="px-4 py-3 text-gray-500 uppercase font-black text-[8px] text-left">${r.subject} (${r.package || 'Pkt 1'})</td><td class="px-4 py-3 text-xs text-center"><span class="text-green-600 font-bold">${r.correct}</span>/<span class="text-red-500 font-bold">${r.wrong}</span>/<span class="text-gray-400 font-bold">${r.empty}</span></td><td class="px-4 py-3 text-center"><span class="bg-blue-100 text-blue-700 px-2 py-0.5 rounded font-black">${r.score}</span></td><td class="px-4 py-3 text-right text-gray-400 text-[10px]">${dt}</td>`;
                 t.appendChild(tr);
             });
             document.getElementById('statTotalPeserta').innerText = tot;
@@ -673,6 +679,12 @@
 
         window.prepareExam = () => {
             const n = document.getElementById('studentName').value.trim(); if (!n) return showToast("Isi Nama Kamu!", "error");
+            if (!currentUserObj) {
+                showToast("Menghubungkan ke Cloud...", "error");
+                initAuth();
+                return;
+            }
+            
             selectedPackage = Math.random() < 0.5 ? 'Paket 1' : 'Paket 2';
             activeQuestions = allQuestions.filter(q => q.subject === selectedSubject && q.package === selectedPackage);
             
@@ -682,9 +694,10 @@
                 if (activeQuestions.length > 0) selectedPackage = alt;
             }
 
-            if (activeQuestions.length === 0) return showToast("Soal belum tersedia!", "error");
+            if (activeQuestions.length === 0) return showToast("Soal belum tersedia untuk materi ini!", "error");
             
-            activeQuestions = activeQuestions.sort(() => 0.5 - Math.random());
+            activeQuestions = activeQuestions.sort(() => 0.5 - Math.random()).slice(0, MAX_QUESTIONS_PER_EXAM);
+            
             userAnswers = activeQuestions.map(q => (q.type === 'pgk' ? [] : null));
             doubts = new Array(activeQuestions.length).fill(false);
             currentIdx = 0;
@@ -745,12 +758,30 @@
         window.toggleDoubtful = () => { doubts[currentIdx] = !doubts[currentIdx]; renderQuestion(); renderGrid(); };
         const updateProgress = () => { const n = activeQuestions.filter((q,i) => q.type === 'pgk' ? userAnswers[i].length > 0 : userAnswers[i] !== null).length; document.getElementById('progressText').innerText = `${n}/${activeQuestions.length}`; };
 
-        const startTimer = () => { timerSeconds = 30 * 60; clearInterval(timerInterval); timerInterval = setInterval(() => { timerSeconds--; if (timerSeconds <= 0) { clearInterval(timerInterval); finishExam(); } const m = Math.floor(timerSeconds/60), s = timerSeconds % 60; document.getElementById('timer').innerText = `${m.toString().padStart(2,'0')}:${s.toString().padStart(2,'0')}`; }, 1000); };
+        const startTimer = () => { 
+            timerSeconds = EXAM_DURATION_MINS * 60; 
+            clearInterval(timerInterval); 
+            timerInterval = setInterval(() => { 
+                timerSeconds--; 
+                if (timerSeconds <= 0) { 
+                    clearInterval(timerInterval); 
+                    finishExam(); 
+                } 
+                const m = Math.floor(timerSeconds/60), s = timerSeconds % 60; 
+                document.getElementById('timer').innerText = `${m.toString().padStart(2,'0')}:${s.toString().padStart(2,'0')}`; 
+            }, 1000); 
+        };
 
-        window.confirmFinish = () => openConfirmModal("Akhiri Tes?", "Kirim semua jawaban kamu ke database sekarang?", finishExam);
+        window.confirmFinish = () => openConfirmModal("Akhiri Tes?", "Kirim semua jawaban kamu sekarang ke database?", finishExam);
         
         window.finishExam = async () => {
             clearInterval(timerInterval); closeConfirmModal();
+            if (!currentUserObj) {
+                showToast("Koneksi terputus. Mencoba menghubungkan ulang...", "error");
+                await initAuth();
+                if (!currentUserObj) return;
+            }
+
             let c=0, w=0, e=0, twc=0, twa=0;
             activeQuestions.forEach((q, i) => {
                 const ans = userAnswers[i], weight = q.weight || 1;
@@ -766,13 +797,26 @@
             showView('resultPage');
             const resData = { name: document.getElementById('studentName').value, subject: selectedSubject, package: selectedPackage, correct: c, wrong: w, empty: e, score: sc, createdAt: serverTimestamp() };
             try {
+                // RULE 1: Simpan ke artifacts/{appId}/public/data/results
                 await addDoc(collection(db, 'artifacts', appId, 'public', 'data', 'results'), resData);
+                console.log("Firebase Save OK");
+                
                 const gUrl = document.getElementById('gasUrl').value.trim();
-                if (gUrl) fetch(gUrl, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(resData) });
-            } catch (err) { console.error(err); }
+                if (gUrl) {
+                    // Mengirim ke GAS tanpa headers untuk menghindari CORS preflight block
+                    fetch(gUrl, { 
+                        method: 'POST', 
+                        mode: 'no-cors', 
+                        body: JSON.stringify(resData) 
+                    }).then(() => console.log("Spreadsheet Send Attempt OK"));
+                }
+            } catch (err) { 
+                console.error("Save fail:", err); 
+                document.getElementById('resultMsg').innerText = "Gagal simpan ke database: " + err.message;
+            }
         };
 
-        // --- UI HELPERS ---
+        // --- UI UTILITIES ---
 
         window.openConfirmModal = (t, b, a) => { document.getElementById('confirmTitle').innerText = t; document.getElementById('confirmBody').innerText = b; document.getElementById('confirmBtnAction').onclick = a; document.getElementById('confirmModal').style.display = 'flex'; };
         window.closeConfirmModal = () => document.getElementById('confirmModal').style.display = 'none';
